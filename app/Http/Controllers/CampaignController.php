@@ -11,7 +11,7 @@ class CampaignController extends Controller
     public function index()
     {
         try {
-            $campaigns = Campaign::where('user_id', Auth::id())->get();
+            $campaigns = Campaign::where('created_by', Auth::id())->get();
             return response()->json($campaigns, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Could not fetch campaigns'], 500);

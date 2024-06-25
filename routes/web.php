@@ -81,3 +81,7 @@ Route::prefix('chat')->group(function () {
         Route::get('campaigns/details/{id}', [CampaignController::class, 'getDetails']);
     });
 });
+
+use App\Http\Controllers\WhatsAppController;
+
+Route::post('/whatsapp/callback', [WhatsAppController::class, 'callback']);

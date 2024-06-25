@@ -11,7 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         try {
-            $contacts = Contact::where('user_id', Auth::id())->get();
+            $contacts = Contact::where('created_by', Auth::id())->get();
             return response()->json($contacts, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Could not fetch contacts'], 500);
