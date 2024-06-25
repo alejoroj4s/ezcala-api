@@ -15,6 +15,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Tables\Actions\ImportAction;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ContactResource extends Resource
 {
@@ -31,18 +32,25 @@ class ContactResource extends Resource
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->maxLength(255),
-            ]);
+        ->schema([
+            Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('email')
+                ->required()
+                ->email()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('phone')
+                ->required()
+                ->tel()
+                ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
+                ->maxLength(20),
+            Forms\Components\Hidden::make('user_id')
+                ->default(auth()->user()->id),
+            Forms\Components\BelongsToSelect::make('organization_id')
+                ->relationship('organization', 'name')
+                ->required(),
+        ]);
     }
 
     public static function table(Tables\Table $table): Tables\Table

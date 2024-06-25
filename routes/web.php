@@ -30,6 +30,7 @@ use App\Http\Controllers\CampaignController;
 Route::prefix('chat')->group(function () {
     Route::post('register', [UserController::class, 'register']);
     Route::post('login', [UserController::class, 'login']);
+    Route::get('user/token', [UserController::class, 'getToken']);
 
     Route::middleware('auth:api')->group(function () {
         Route::get('me', [UserController::class, 'me']);

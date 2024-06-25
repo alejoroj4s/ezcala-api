@@ -14,7 +14,7 @@ class WhatsAppAccountController extends Controller
             $accounts = WhatsAppAccount::where('user_id', Auth::id())->get();
             return response()->json($accounts, 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Could not fetch WhatsApp accounts'], 500);
+            return response()->json(['error' => 'Could not fetch WhatsApp accounts', 'message' => $e->getMessage()], 500);
         }
     }
 
@@ -32,7 +32,7 @@ class WhatsAppAccountController extends Controller
 
             return response()->json($account, 201);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'WhatsApp account creation failed'], 409);
+            return response()->json(['error' => 'WhatsApp account creation failed', 'message' => $e->getMessage()], 409);
         }
     }
 
@@ -44,7 +44,7 @@ class WhatsAppAccountController extends Controller
 
             return response()->json($account, 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'WhatsApp account update failed'], 409);
+            return response()->json(['error' => 'WhatsApp account update failed', 'message' => $e->getMessage()], 409);
         }
     }
 
@@ -54,12 +54,14 @@ class WhatsAppAccountController extends Controller
             WhatsAppAccount::findOrFail($id)->delete();
             return response()->json(null, 204);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'WhatsApp account deletion failed'], 409);
+            return response()->json(['error' => 'WhatsApp account deletion failed', 'message' => $e->getMessage()], 409);
         }
     }
 
+   /*
     public function generateEmbedSignupLink()
     {
         // Implementar lógica para generar el enlace de registro de WhatsApp
     }
+    */
 }

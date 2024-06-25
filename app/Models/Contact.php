@@ -27,4 +27,9 @@ class Contact extends Model
     {
         return $this->belongsToMany(Tag::class, 'relation_contact_tag');
     }
+
+    public function customFieldValues()
+    {
+        return $this->hasMany(CustomFieldValue::class);
+    }
 }

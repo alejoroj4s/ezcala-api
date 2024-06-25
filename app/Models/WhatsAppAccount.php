@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class WhatsAppAccount extends Model
 {
+    protected $table = 'whatsapp_accounts';
+
     protected $fillable = [
         'user_id', 'organization_id', 'whatsapp_number', 'whatsapp_number_id', 'account_id', 'access_token'
     ];

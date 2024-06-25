@@ -71,4 +71,13 @@ class UserController extends Controller
     {
         return $this->respondWithToken(auth()->refresh());
     }
+
+    public function getToken()
+    {
+        if (!$token = JWTAuth::fromUser(auth()->user())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return response()->json(['token' => $token]);
+    }
 }
