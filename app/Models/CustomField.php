@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomField extends Model
 {
-    protected $fillable = ['organization_id', 'name', 'type']; // Add more field types if needed (e.g., 'textarea', 'select')
+    use HasFactory;
+
+    protected $fillable = ['user_id','organization_id', 'name', 'type'];
 
     public function organization()
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    public function values()
+    {
+        return $this->hasMany(CustomFieldValue::class);
     }
 }

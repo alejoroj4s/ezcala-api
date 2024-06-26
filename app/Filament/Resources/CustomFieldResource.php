@@ -23,24 +23,21 @@ class CustomFieldResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('organization_id')
-                    ->relationship('organization', 'name')
-                    ->required(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('user_id')->required(),
                 Forms\Components\Select::make('type')
                     ->options([
                         'text' => 'Text',
                         'number' => 'Number',
                         'date' => 'Date',
-                        // Agrega otros tipos de campo que necesites
                     ])
+                    ->required(),
+                Forms\Components\Select::make('organization_id')
+                    ->relationship('organization', 'name')
                     ->required(),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {

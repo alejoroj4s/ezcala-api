@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class UserOrganization extends Model
 {
-    protected $fillable = ['user_id', 'organization_id', 'name'];
+    protected $table = 'relation_user_organization';
 
     public function user()
     {
@@ -16,10 +16,5 @@ class Tag extends Model
     public function organization()
     {
         return $this->belongsTo(Organization::class);
-    }
-
-    public function contacts()
-    {
-        return $this->belongsToMany(Contact::class, 'relation_contact_tag', 'tag_id', 'contact_id');
     }
 }

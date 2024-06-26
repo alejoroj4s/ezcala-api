@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\CustomFieldValue;
+use App\Models\CustomField;
+use App\Traits\HandlesCustomFields;
 use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+    use HandlesCustomFields;
+
     public function index()
     {
         try {
-            $contacts = Contact::where('created_by', Auth::id())->get();
+            $contacts = Contact::where('user_id', Auth::id())->get();
             return response()->json($contacts, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Could not fetch contacts'], 500);
@@ -38,8 +43,9 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
             $contact = Contact::findOrFail($id);
-            $contact->update($request->all());
+            $contact->update($request->only(['organization_id', 'name', 'phone', 'email']));
 
             return response()->json($contact, 200);
         } catch (\Exception $e) {

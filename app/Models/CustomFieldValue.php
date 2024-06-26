@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomFieldValue extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['contact_id', 'custom_field_id', 'value'];
 
     public function contact()

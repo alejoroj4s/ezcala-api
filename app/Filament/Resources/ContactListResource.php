@@ -22,6 +22,8 @@ class ContactListResource extends Resource
     protected static ?string $navigationGroup = 'CRM';
 
     protected static ?string $navigationLabel = 'Listas';
+    
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

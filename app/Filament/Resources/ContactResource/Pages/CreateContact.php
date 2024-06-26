@@ -3,8 +3,9 @@
 namespace App\Filament\Resources\ContactResource\Pages;
 
 use App\Filament\Resources\ContactResource;
-use Filament\Actions;
+use App\Models\Contact;
 use Filament\Resources\Pages\CreateRecord;
+use App\Traits\HandlesCustomFields;
 
 class CreateContact extends CreateRecord
 {

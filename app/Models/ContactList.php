@@ -22,6 +22,6 @@ class ContactList extends Model
 
     public function contacts()
     {
-        return $this->belongsToMany(Contact::class, 'relation_contact_list');
+        return $this->belongsToMany(Contact::class, 'relation_contact_list', 'list_id', 'contact_id');
     }
 }
