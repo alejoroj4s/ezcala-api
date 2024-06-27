@@ -88,4 +88,9 @@ return [
 
     'livewire_loading_delay' => 'default',
 
+    'middleware' => [
+    'auth',
+    \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    ],
+
 ];

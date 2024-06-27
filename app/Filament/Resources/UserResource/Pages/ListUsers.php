@@ -16,4 +16,11 @@ class ListUsers extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    // public function mount(): void
+    // {
+    //     parent::mount();
+
+    //     abort_unless(auth()->user()->can('manage users'), 403);
+    // }
 }

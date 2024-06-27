@@ -17,7 +17,11 @@ class CustomFieldResource extends Resource
 {
     protected static ?string $model = CustomField::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'CRM';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationIcon = 'heroicon-o-table-cells';
 
     public static function form(Form $form): Form
     {

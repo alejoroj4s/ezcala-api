@@ -305,7 +305,7 @@ class ContactResource extends Resource
             'index' => Pages\ListContacts::route('/'),
             'create' => Pages\CreateContact::route('/create'),
             'edit' => Pages\EditContact::route('/{record}/edit'),
-            'contact-assign' => Pages\ContactAssign::route('/assign/{importId}'),
+            //'contact-assign' => Pages\ContactAssign::route('/assign/{importId}'),
         ];
     }
 }
