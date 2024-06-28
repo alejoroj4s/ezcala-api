@@ -25,6 +25,8 @@ class WhatsAppAccountResource extends Resource
 
     protected static ?string $navigationLabel = 'Cuentas de WhatsApp';
 
+    protected static ?string $tenantRelationshipName = 'whatsappAccounts';
+
     public static function form(Form $form): Form
     {
         return $form

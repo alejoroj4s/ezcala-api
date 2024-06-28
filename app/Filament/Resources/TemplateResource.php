@@ -25,6 +25,8 @@ class TemplateResource extends Resource
 
     protected static ?string $navigationLabel = 'Plantillas';
 
+    protected static ?string $tenantRelationshipName = 'templates';
+
     public static function form(Form $form): Form
     {
         return $form

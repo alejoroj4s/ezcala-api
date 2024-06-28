@@ -44,6 +44,8 @@ class ContactResource extends Resource
 
     protected static ?string $navigationLabel = 'Contactos';
 
+    protected static ?string $tenantRelationshipName = 'contacts';
+
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
@@ -55,13 +57,13 @@ class ContactResource extends Resource
             Forms\Components\TextInput::make('name')->required(),
             Forms\Components\TextInput::make('phone')->required(),
             Forms\Components\TextInput::make('email')->email()->required(),
-            Forms\Components\Select::make('organization_id')
-                ->label('Organization')
-                ->options(Auth::user()->organizations->pluck('name', 'id'))
-                ->required()
-                ->reactive()
-                ->default(fn () => Auth::user()->organizations->count() === 1 ? Auth::user()->organizations->first()->id : null)
-                ->disabled(fn () => Auth::user()->organizations->count() === 1),
+            // Forms\Components\Select::make('organization_id')
+            //     ->label('Organization')
+            //     ->options(Auth::user()->organizations->pluck('name', 'id'))
+            //     ->required()
+            //     ->reactive()
+            //     ->default(fn () => Auth::user()->organizations->count() === 1 ? Auth::user()->organizations->first()->id : null)
+            //     ->disabled(fn () => Auth::user()->organizations->count() === 1),
         ]);
     }
 
@@ -123,7 +125,6 @@ class ContactResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-
 
             /*->filters([
                 SelectFilter::make('organization_id')

@@ -23,6 +23,8 @@ class CustomFieldResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-table-cells';
 
+    protected static ?string $tenantRelationshipName = 'customFields';
+
     public static function form(Form $form): Form
     {
         return $form

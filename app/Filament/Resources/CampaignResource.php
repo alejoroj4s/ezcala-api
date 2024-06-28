@@ -25,6 +25,8 @@ class CampaignResource extends Resource
 
     protected static ?string $navigationLabel = 'Campañas';
 
+    protected static ?string $tenantRelationshipName = 'campaigns';
+
     public static function form(Form $form): Form
     {
         return $form

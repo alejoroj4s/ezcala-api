@@ -25,6 +25,8 @@ class TagResource extends Resource
     
     protected static ?string $navigationLabel = 'Etiquetas';
 
+    protected static ?string $tenantRelationshipName = 'tags';
+
     public static function form(Form $form): Form
     {
         return $form
