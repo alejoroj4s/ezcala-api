@@ -13,9 +13,10 @@ use App\Models\Client;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable implements JWTSubject, HasTenants {
-    use Notifiable, HasRoles, HasFactory;
+    use Notifiable, HasRoles, HasFactory, Billable;
 
     protected $fillable = ['name', 'email', 'phone', 'password'];
     protected $hidden = ['password', 'remember_token'];
@@ -52,4 +53,5 @@ class User extends Authenticatable implements JWTSubject, HasTenants {
         return $this->organizations()->whereKey($tenant)->exists();
         //return true;
     }
+    
 }

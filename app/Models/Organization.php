@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User;
+use Laravel\Cashier\Billable;
 
 class Organization extends Model
 {
 
-    use HasFactory;
+    use HasFactory, Billable;
     
     protected $fillable = ['name'];
 
@@ -56,5 +57,10 @@ class Organization extends Model
     public function whatsappAccounts()
     {
         return $this->hasMany(WhatsAppAccount::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
     }
 }

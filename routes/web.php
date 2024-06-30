@@ -86,3 +86,14 @@ Route::prefix('chat')->group(function () {
 use App\Http\Controllers\WhatsAppController;
 
 Route::post('/whatsapp/callback', [WhatsAppController::class, 'callback']);
+
+use App\Http\Controllers\SubscriptionController;
+
+Route::post('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+Route::post('/subscriptions/cancel', [SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
+
+use App\Filament\Pages\Payment;
+
+Route::post('/filament/payment/create-subscription', [Payment::class, 'createSubscription'])
+    ->name('filament.pages.payment.createSubscription')
+    ->middleware(['auth']);
