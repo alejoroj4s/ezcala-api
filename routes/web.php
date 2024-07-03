@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 use App\Http\Controllers\UserController;
@@ -87,13 +87,7 @@ use App\Http\Controllers\WhatsAppController;
 
 Route::post('/whatsapp/callback', [WhatsAppController::class, 'callback']);
 
-use App\Http\Controllers\SubscriptionController;
+// use App\Http\Controllers\SubscriptionController;
 
-Route::post('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
-Route::post('/subscriptions/cancel', [SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
-
-use App\Filament\Pages\Payment;
-
-Route::post('/filament/payment/create-subscription', [Payment::class, 'createSubscription'])
-    ->name('filament.pages.payment.createSubscription')
-    ->middleware(['auth']);
+// Route::post('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+// Route::post('/subscriptions/cancel', [SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
